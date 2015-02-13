@@ -29,7 +29,6 @@ function rotate(arr, k) {
 	return rotated;
 }
 
-
 function reverse(arr) {
 	function swap(arr, i, j) {
 		var tmp = arr[i];
