@@ -2,6 +2,8 @@
 	Write a function that rotates an integer array by a given number k. 
 	k elements from the end should move to the beginning of array, 
 	and all other elements should move to right to make the space.
+	
+	two implementations: 1) O(n) additional memory, 2) in place 
 */
 
 // additional memory: O(n)  
@@ -62,7 +64,7 @@ function reverseRange(arr, lo, hi) {
 
 // additional memory: in place  
 // running time: O(n) 
-function rotate2(arr, k) {
+function rotateIP(arr, k) {
 	var n = arr.length-1;
 	k = k % n;
 	if (k <= 0) {
