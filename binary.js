@@ -4,17 +4,17 @@ function binarySearch(arr, lo, hi, val) {
 	// hi = mid - 1;
 	while (lo <= hi) {
 		var mid = (lo + hi) / 2; // or lo + (hi-lo)/2 to overcome intiger overflow problem, but this is not an issue in JS;
-		mid = mid>>0;
+		mid = mid >> 0;
 		if (arr[mid] > val) {
-			hi = mid -1;
-		} else if(arr[mid] < val) {
+			hi = mid - 1;
+		} else if (arr[mid] < val) {
 			lo = mid + 1;
 		} else {
 			return mid;
 		}
-	} 
+	}
 	// not found
-	return -1;	
+	return -1;
 }
 
 
@@ -25,11 +25,11 @@ function binSearchRec(arr, lo, hi, val) {
 	}
 
 	var mid = (lo + hi) / 2; // or lo + (hi-lo)/2 to overcome intiger overflow problem, but this is not an issue in JS;
-	mid = mid>>0;
+	mid = mid >> 0;
 
 	if (arr[mid] > val) {
 		return binSearchRec(arr, lo, mid - 1, val);
-	} else if(arr[mid] < val) {
+	} else if (arr[mid] < val) {
 		return binSearchRec(arr, mid + 1, hi, val);
 	} else {
 		return mid;
@@ -43,19 +43,18 @@ function binarySearchFloor(arr, lo, hi, p) {
 	// hi = mid;
 	while (lo < hi) {
 		var mid = (lo + hi) / 2; // or lo + (hi-lo)/2 to overcome intiger overflow problem, but this is not an issue in JS;
-		mid = mid>>0;
+		mid = mid >> 0;
 		if (p(arr[mid])) {
 			hi = mid;
 		} else {
 			lo = mid + 1;
 		}
-	} 
+	}
 	// lo == hi always 
 	if (!p(arr[hi])) {
 		// all elements project to false/no
 		return -1;
-	}
-	else {
+	} else {
 		return hi;
 	}
 }
@@ -82,13 +81,12 @@ function binarySearchCeil(arr, lo, hi, p) {
 		} else {
 			lo = mid;
 		}
-	} 
+	}
 	// lo == hi always 
 	if (p(arr[hi])) {
 		// all elements project to true/yes
 		return -1;
-	}
-	else {
+	} else {
 		return hi;
 	}
 }

@@ -14,12 +14,13 @@
 */
 
 function crossArraysMax(arr, lo, mid, hi) {
+	"use strict";
 	var sumLeft = 0, maxLeft = Number.NEGATIVE_INFINITY, leftIndex,
 		sumRight = 0, maxRight = Number.NEGATIVE_INFINITY, rightIndex,
 		i,
 		j;
 	
-	for (i = mid; i >= lo; i--) {
+	for (i = mid; i >= lo; i -= 1) {
 		sumLeft += arr[i];
 		if (sumLeft > maxLeft) {
 			maxLeft = sumLeft;
@@ -27,7 +28,7 @@ function crossArraysMax(arr, lo, mid, hi) {
 		}
 	}
 	
-	for (j = mid + 1; j <= hi; j++) {
+	for (j = mid + 1; j <= hi; j += 1) {
 		sumRight += arr[j];
 		if (sumRight > maxRight) {
 			maxRight = sumRight;
@@ -41,29 +42,30 @@ function crossArraysMax(arr, lo, mid, hi) {
 			maxSum: maxLeft + maxRight,
 			leftIndex: leftIndex,
 			rightIndex: rightIndex
-		}
+		};
 	} else if (maxLeft < 0) {
 		return {
 			maxSum: maxRight,
 			leftIndex: mid + 1,
 			rightIndex: rightIndex
-		}
+		};
 	} else {
 		//max right < 0
 		return {
 			maxSum: maxLeft,
 			leftIndex: leftIndex,
 			rightIndex: mid
-		}
+		};
 	}
 }
 
 function maxSubArrayImpl(arr, lo, hi) {
+	"use strict";
 	if (lo === hi) {
 		return {maxSum: arr[lo], leftIndex: lo, rightIndex: hi};
 	}
 	
-	var mid = Math.floor(lo + (hi - lo)/2),
+	var mid = Math.floor(lo + (hi - lo) / 2),
 		maxLeft = maxSubArrayImpl(arr, lo, mid),
 		maxRight = maxSubArrayImpl(arr, mid + 1, hi),
 		maxCrossSum = crossArraysMax(arr, lo, mid, hi);
@@ -78,7 +80,8 @@ function maxSubArrayImpl(arr, lo, hi) {
 }
 
 function maxSubArray(arr) {
-	return maxSubArrayImpl(arr, 0, arr.length-1);
+	"use strict";
+	return maxSubArrayImpl(arr, 0, arr.length - 1);
 }
 
 // TODO: test cases

@@ -9,6 +9,7 @@
 // additional memory: O(n)  
 // running time: O(n) 
 function rotate(arr, k) {
+	"use strict";
 	var n = arr.length,
 		i,
 		rotated;
@@ -20,9 +21,9 @@ function rotate(arr, k) {
 
 	rotated = new Array(n);
 
-	for (i = 0; i < n; i++) {
+	for (i = 0; i < n; i += 1) {
 		if (i < k) {
-			rotated[i] = arr[n - k + i]; 
+			rotated[i] = arr[n - k + i];
 		} else {
 			rotated[i] = arr[i - k];
 		}
@@ -32,21 +33,24 @@ function rotate(arr, k) {
 }
 
 function reverse(arr) {
+	"use strict";
 	function swap(arr, i, j) {
 		var tmp = arr[i];
 		arr[i] = arr[j];
 		arr[j] = tmp;
 	}
 	var n = arr.length,
-		k = Math.floor(n/2);
+		k = Math.floor(n / 2),
+		i;
 
-	for (var i = 0; i < k; i++) {
+	for (i = 0; i < k; i += 1) {
 		swap(arr, i, n - i - 1);
 	}
-	return arr
+	return arr;
 }
 
 function reverseRange(arr, lo, hi) {
+	"use strict";
 	function swap(arr, i, j) {
 		var tmp = arr[i];
 		arr[i] = arr[j];
@@ -55,24 +59,25 @@ function reverseRange(arr, lo, hi) {
 
 	while (lo < hi) {
 		swap(arr, lo, hi);
-		lo++;
-		hi--;
+		lo += 1;
+		hi -= 1;
 	}
 
-	return arr
+	return arr;
 }
 
 // additional memory: in place  
 // running time: O(n) 
 function rotateIP(arr, k) {
-	var n = arr.length-1;
+	"use strict";
+	var n = arr.length - 1;
 	k = k % n;
 	if (k <= 0) {
 		return arr;
 	}
 
 	reverseRange(arr, 0, n);
-	reverseRange(arr, 0, k-1);
+	reverseRange(arr, 0, k - 1);
 	reverseRange(arr, k, n);
 
 	return arr;
