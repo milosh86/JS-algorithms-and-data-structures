@@ -1,7 +1,7 @@
 /*
- Problem statement: Find maximum subarray of array A.
+ Problem statement: Find contiguous subarray within array A which has the largest sum.
  
- A solution below is using divide-and-conquer algorithm. If we divide given array A to A[0..mid] and A[mid+1, A.length-1], then maximal subarray is either in:
+ First solution is using divide-and-conquer algorithm. If we divide given array A to A[0..mid] and A[mid+1, A.length-1], then maximal subarray is either in:
  1) part 1
  2) part 2
  3) crossing both parts
@@ -11,6 +11,8 @@
  Divide: two equal parts
  Conquer: solve sub-problems recursively. Base case: array with one item is trivial solution. 
  Combine: crossArraysMax procedure + finding max(maxLeft, maxRight, maxCross)
+ 
+ Second solution is based on Kadene's algorithm which solves the problem in linear time. If we define state Si as maximum sum subsequence that ends on element on position i. Element i can be start of new sequence or can be part of previous sequence. If maximum that ends on element i is bigger than current maximum, it is new maximum.
 */
 
 function crossArraysMax(arr, lo, mid, hi) {
@@ -84,4 +86,33 @@ function maxSubArray(arr) {
 	return maxSubArrayImpl(arr, 0, arr.length - 1);
 }
 
+// Kadene's algorithm variation - linear time solution
+function maxSubArrayLinear(arr) {
+	"use strict";
+	var maxEndingHere = arr[0],
+		maxSoFar = maxEndingHere,
+		i,
+		n = arr.length,
+		leftIndex = 0,
+		//rightIndex = 0,
+		maxLeft = 0,
+		maxRight = 0;
+	// original Kadene's algorithm sets start of new sequence to 0 instead of arr[i], so it don't support case when array has only negative elements! 
+	for (i = 1; i < n; i += 1) {
+		if (maxEndingHere > 0) {
+			maxEndingHere += arr[i];
+			//rightIndex = i;
+		} else {
+			maxEndingHere = arr[i];
+			leftIndex = i;
+		}
+		
+		if (maxEndingHere > maxSoFar) {
+			maxSoFar = maxEndingHere;
+			maxLeft = leftIndex;
+			maxRight = i;
+		}
+	}
+	return {maxSum: maxSoFar, leftIndex: maxLeft, rightIndex: maxRight};
+}
 // TODO: test cases
