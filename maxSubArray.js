@@ -12,7 +12,10 @@
  Conquer: solve sub-problems recursively. Base case: array with one item is trivial solution. 
  Combine: crossArraysMax procedure + finding max(maxLeft, maxRight, maxCross)
  
- Second solution is based on Kadene's algorithm which solves the problem in linear time. If we define state Si as maximum sum subsequence that ends on element on position i. Element i can be start of new sequence or can be part of previous sequence. If maximum that ends on element i is bigger than current maximum, it is new maximum.
+ Second solution is based on Kadene's algorithm which solves the problem in linear time. 
+ If we define state Si as maximum sum subsequence that ends on element on position i. 
+ Element i can be start of new sequence or can be part of previous sequence. 
+ If maximum that ends on element i is bigger than current maximum, it is new maximum.
 */
 
 function crossArraysMax(arr, lo, mid, hi) {
@@ -85,7 +88,8 @@ function maxSubArray(arr) {
 	"use strict";
 	return maxSubArrayImpl(arr, 0, arr.length - 1);
 }
-
+// ************************************************************************
+//
 // Kadene's algorithm variation - linear time solution
 function maxSubArrayLinear(arr) {
 	"use strict";
@@ -98,6 +102,7 @@ function maxSubArrayLinear(arr) {
 		maxLeft = 0,
 		maxRight = 0;
 	// original Kadene's algorithm sets start of new sequence to 0 instead of arr[i], so it don't support case when array has only negative elements! 
+	// in this implementation left and right index of subarray is added also.
 	for (i = 1; i < n; i += 1) {
 		if (maxEndingHere > 0) {
 			maxEndingHere += arr[i];
@@ -115,4 +120,4 @@ function maxSubArrayLinear(arr) {
 	}
 	return {maxSum: maxSoFar, leftIndex: maxLeft, rightIndex: maxRight};
 }
-// TODO: test cases
+// TODO: test case
