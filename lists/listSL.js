@@ -114,6 +114,23 @@ var listAPI = {
 		return this._size;
 	},
 	/**
+	 * String representation of list
+	 * @returns {String} list
+	 */
+	toString: function() {
+	    var tmp = this.first(),
+		ret = '{';
+	    while (tmp) {
+	        ret += tmp.data;
+	        tmp = tmp.next;
+	        if (tmp) {
+	            ret += ',';	
+	        }
+	    }
+	    ret += '}';
+	    return ret;
+	},
+	/**
 	 * List init operation
 	 * @returns {Object} Initialized list
 	 * @private                  
