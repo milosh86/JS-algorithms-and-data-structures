@@ -1,7 +1,16 @@
-function cons(elem, list) {
-    isList(list) && isElem(elem);
-    
-    return node(elem).next = list.head;
+var list = require('../lists/listSL.js');
+
+
+function cons(elem, l) {
+    return l.addFront(elem);
+}
+
+function head(l) {
+    return list().addFront(l.head());
+}
+
+function tail(l) {
+    return l.first().next;
 }
 
 function length(list) {
