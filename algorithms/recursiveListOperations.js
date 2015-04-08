@@ -26,6 +26,13 @@ function drop(n, list) {
     return drop(n - 1, tail(list));
 }
 
+function init(list) {
+    if (length(list) === 1) {
+        return newList();
+    }
+    return cons(head(list), init(tail(list)));
+}
+
 /**
  * Append list1 on list2
  * @param   {list} l1 
