@@ -6,7 +6,7 @@ function cons(elem, l) {
 }
 
 function head(l) {
-    return list().addFront(l.head());
+    return list().addFront(l.first().data);
 }
 
 function tail(l) {
