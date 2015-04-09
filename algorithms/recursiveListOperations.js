@@ -78,3 +78,20 @@ function filter (p, list) {
         filter(p, tail(list));
     }
 }
+
+function foldr(f, v) {
+    return function (list) {
+        if (list.isEmpty()) {
+            return v;
+        } else {
+            return f(list.first(), foldr(f, v, tail(list)));
+        }
+    }
+}
+
+var sum = foldr((a,b) => a + b, 0);
+var map = (function() {
+    return function (f, list) {
+        return foldr((a,b) => cons(f(a), b), [], list);
+    }
+}());
