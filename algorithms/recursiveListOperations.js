@@ -95,3 +95,9 @@ var map = (function() {
         return foldr((a,b) => cons(f(a), b), [], list);
     }
 }());
+
+function compose(f, g) {
+    return function (x) {
+        f(g(x));
+    };
+}
