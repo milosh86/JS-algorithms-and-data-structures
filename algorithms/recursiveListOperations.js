@@ -61,3 +61,20 @@ function replicate(n, elem) {
     }
     cons(elem, replicate(n-1, elem));   
 }
+
+function map(f, list) {
+    if (list.isEmpty()) {
+        return newList();
+    }
+    cons(f(list.first()), map(f, tail(list)));
+} 
+
+function filter (p, list) {
+    if (list.isEmpty()) {
+        return newList();
+    } else if (p(list.first())) {
+        cons(list.first(), filter(p, tail(list)));
+    } else {
+        filter(p, tail(list));
+    }
+}
