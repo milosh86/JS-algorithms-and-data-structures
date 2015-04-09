@@ -101,4 +101,4 @@ var deque = (function queueModule() {
 	};
 }());
 
-
+module.exports = deque;

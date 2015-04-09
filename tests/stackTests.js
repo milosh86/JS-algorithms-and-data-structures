@@ -1,3 +1,4 @@
+var stack = require('../stacks/stack.js');
 var s = stack(5);
 QUnit.module('Stack API tests', {
   beforeEach: function() {

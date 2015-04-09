@@ -1,3 +1,4 @@
+var deque = require('../deques/deque.js');
 var dq = deque(5);
 QUnit.module('Deque API tests');
 

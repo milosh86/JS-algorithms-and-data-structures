@@ -1,0 +1,25 @@
+{
+  "name": "JS-algorithms-and-data-structures",
+  "version": "0.0.1",
+  "description": "Algorithms and data structures in JS",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "browserify ./tests/*.js -o ./tests/out/tests.js"
+  },
+  "devDependencies": {
+    "browserify": "^9.0.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/milosh86/JS-algorithms-and-data-structures.git"
+  },
+  "author": "Milos Dzepina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/milosh86/JS-algorithms-and-data-structures/issues"
+  },
+  "homepage": "https://github.com/milosh86/JS-algorithms-and-data-structures"
+}

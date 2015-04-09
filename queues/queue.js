@@ -60,3 +60,5 @@ var queue = (function queueModule() {
 		return queue.init(capacity);
 	};
 }());
+
+module.exports = queue;

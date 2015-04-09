@@ -78,5 +78,6 @@ var stack = (function stackModule() {
 	};
 }());
 
+module.exports = stack;
 
 

@@ -1,4 +1,4 @@
-var stack = require('./stackList');
+var stack = require('../stacks/stackList.js');
 
 var s = stack();
 QUnit.module('StackList API tests', {

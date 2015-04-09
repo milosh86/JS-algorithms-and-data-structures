@@ -1,4 +1,4 @@
-var list = require('./listSL');
+var list = require('../lists/listSL');
 
 var l = list()
 

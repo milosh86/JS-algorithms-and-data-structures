@@ -1,3 +1,4 @@
+var queue = require('../queues/queue.js');
 var q = queue(5);
 QUnit.module('Queue API tests', {
   beforeEach: function() {

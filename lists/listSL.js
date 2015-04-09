@@ -38,7 +38,7 @@ var listAPI = {
 	addBack: function addBack(val) {
 		var newNode = node(val);
 		if (this.isEmpty()) {
-			this._last = this._head = newNode;
+			this._last = this._first = newNode;
 		} else {
 			this._last.next = newNode;
 			this._last = newNode;

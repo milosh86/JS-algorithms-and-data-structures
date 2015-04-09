@@ -1,4 +1,4 @@
-var list = require('./listSL');
+var list = require('../lists/listSL');
 // list based stack
 var stack = (function stackModule() {
 	var stackAPI = {
