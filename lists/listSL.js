@@ -131,6 +131,24 @@ var listAPI = {
 	    return ret;
 	},
 	/**
+	 * Copy the list - just pointers and size
+	 * @returns {Object} list copy
+	 */
+	copy: function copy() {
+		var listCopy = list();
+		listCopy._first = this._first;
+		listCopy._last = this._last;
+		listCopy._size = this._size;
+		
+		return listCopy;
+	},
+	tail: function tail() {
+		var listCopy = this.copy();
+		listCopy._first = listCopy._first.next;
+		listCopy._size -= 1;
+		return listCopy;
+	},
+	/**
 	 * List init operation
 	 * @returns {Object} Initialized list
 	 * @private                  

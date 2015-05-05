@@ -10,7 +10,7 @@ function head(l) {
 }
 
 function tail(l) {
-    return l.first().next;
+    return l.tail();
 }
 
 function length(list) {
@@ -88,16 +88,23 @@ function foldr(f, v) {
         }
     }
 }
-
-var sum = foldr((a,b) => a + b, 0);
-var map = (function() {
-    return function (f, list) {
-        return foldr((a,b) => cons(f(a), b), [], list);
-    }
-}());
+//
+//var sum = foldr((a,b) => a + b, 0);
+//var map = (function() {
+//    return function (f, list) {
+//        return foldr((a,b) => cons(f(a), b), [], list);
+//    }
+//}());
 
 function compose(f, g) {
     return function (x) {
         f(g(x));
     };
+}
+
+module.exports = {
+	cons: cons,
+	head: head,
+	tail: tail,
+	length: length
 }
